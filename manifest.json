@@ -1,0 +1,15 @@
+{
+    "name": "tagiwebapp.ste-kal",
+    "description": "unofficial Tagesanzeiger WebApp",
+
+    "title": "Tagesanzeiger",
+    "hooks": {
+        "tagiwebapp": {
+            "apparmor": "tagiwebapp.apparmor",
+            "desktop":  "tagiwebapp.desktop"
+        }
+    },
+    "version": "3.0",
+    "maintainer": "Stefan Kalb <stefan.kalb@gmx.ch>",
+    "framework" : "ubuntu-sdk-16.04"
+}
