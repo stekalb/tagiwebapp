@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Tagesanzeiger
 Comment=Morph based alternate Tagesanzeiger Webapp
-Exec=qmlscene %u app/Main.qml --scaling --multisample --gles --fullscreen --disable-gpu
+Exec=qmlscene %u app/Main.qml --scaling --disable-gpu
 Terminal=false
 Type=Application
 Icon=icon.png
