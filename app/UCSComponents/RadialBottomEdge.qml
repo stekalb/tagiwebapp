@@ -7,21 +7,30 @@ Item {
   id: bottomEdge
 
   property int hintSize: units.gu(6)
-  property color hintColor: "#cccccc"
+  property color hintColor: "#0066cc"
   property string hintIconName: "view-grid-symbolic"
   property alias hintIconSource: hintIcon.source
-  property color hintIconColor: UbuntuColors.darkGrey
+  property color hintIconColor: "white"
   property bool bottomEdgeEnabled: true
 
-  property int expandAngle : Screen.orientation == Qt.LandscapeOrientation ? 600 : 250
-  property real expandedPosition: (0.85 - 0.25 * expandAngle/360) * height
-  property real collapsedPosition: height - hintSize/2
+
+  property real actionButtonSize: units.gu(5)
+
+  property real expandedPosition: height - actionButtonSize - actionButtonSize / 1.5
+  //property real collapsedPosition: height - hintSize/2
+  property int collapsedPosition: height - actionButtonSize / 1.5 + 1
 
   property list<RadialAction> actions
-  property real actionButtonSize: units.gu(5)
-  property real actionButtonDistance: 2* hintSize
+  property real actionButtonDistance: actionButtonSize / 4
 
   anchors.fill: parent
+
+  function writeToLog(mylevel,mytext, mymessage){
+    console.log("["+mylevel+"]  "+mytext+" "+mymessage)
+    return(true);
+  }
+
+  //property string writelog8: writeToLog("DEBUG","Orientation:", Screen.orientation);
 
   HapticsEffect {
     id: clickEffect
@@ -34,79 +43,30 @@ Item {
   }
 
   Rectangle {
-    id: bgVisual
-    z: 1
-    visible: bottomEdgeHint.y !== collapsedPosition
-    color: Theme.palette.normal.overlay
-    anchors.fill: parent
-    opacity: 0.8 * (((bottomEdge.height - bottomEdgeHint.y) / bottomEdge.height) * 2)/((expandAngle * .003))
-
-    MouseArea {
-        anchors.fill: parent
-        enabled: bgVisual.visible
-        onClicked: bottomEdgeHint.state = "collapsed"
-        z: 1
-    }
-  }
-
-  Rectangle {
-    id: bottomEdgeHint
-
+    visible: bottomEdgeHint.state !== "collapsed"
+    z: -2
+    width: parent.width
+    height: actionButtonSize
     color: hintColor
-    width: hintSize
-    height: width
-    radius: width
-    visible: bottomEdgeEnabled
-
-    anchors.horizontalCenter: parent.horizontalCenter
-    y: collapsedPosition
-    z: parent.z + 1
-
-    // Rectangle {
-    //   id: dropShadow
-    //   width: parent.width
-    //   height: parent.height
-    //   border.color: "#000000"
-    //   color: "Transparent"
-    //   radius: parent.radius + 1
-    //   z: -1
-    //   anchors {
-    //     centerIn: parent
-    //     verticalCenterOffset: -1 //units.gu(-0.3)
-    //   }
-    // }
-
-    Icon {
-      id: hintIcon
-      width: hintSize/4
-      height: width
-      name: hintIconName
-      color: hintIconColor
-      anchors {
-        centerIn: parent
-        verticalCenterOffset: width * ((bottomEdgeHint.y - expandedPosition) / (expandedPosition - collapsedPosition))
-      }
+    anchors {
+      bottom: parent.bottom
     }
 
-    property real actionListDistance: -actionButtonDistance * ((bottomEdgeHint.y - collapsedPosition) / (collapsedPosition - expandedPosition))
+    //property string writelog6: writeToLog("DEBUG","anchor bottom:", Screen.height - hintSize);
+    //property string writelog5: writeToLog("DEBUG","visible column:", visible);
 
     Repeater {
       id: actionList
       model: actions
-      delegate: Rectangle {
-        id: actionDelegate
-        readonly property real radAngle: (index % actionList.count * (360/actionList.count)) * Math.PI / 180
-        property real distance: bottomEdgeHint.actionListDistance
-        z: -1
+
+      Rectangle { 
         width: actionButtonSize
         height: width
-        radius: width/2
-        anchors.centerIn: parent
-        color: modelData.backgroundColor
-        opacity: modelData.enabled ? 1.0 : 0.7
+        //radius: width
+        color: hintColor
+        
         transform: Translate {
-          x: distance * Math.sin(radAngle)
-          y: -distance * Math.cos(radAngle)
+          x: (index * actionButtonSize) + index * 5
         }
 
         Icon {
@@ -114,14 +74,11 @@ Item {
           anchors.centerIn: parent
           width: parent.width/2
           height: width
-//                    name: !modelData.iconSource ? modelData.iconName : undefined
-//                    source: modelData.iconSource ? Qt.resolvedUrl(modelData.iconSource) : undefined
-          // color: modelData.iconColor
-          color: UbuntuColors.darkGrey
-          opacity: modelData.enabled ? 1.0 : 0.2
+          color: hintIconColor
+          //opacity: modelData.enabled ? 1.0 : 0.2
           Component.onCompleted: modelData.iconSource ? source = Qt.resolvedUrl(modelData.iconSource) : name = modelData.iconName
         }
-
+        
         Label {
           visible: text && bottomEdgeHint.state == "expanded"
           text: modelData.text
@@ -132,11 +89,10 @@ Item {
             bottomMargin: modelData.top ? units.gu(3) : undefined
             horizontalCenter: icon.horizontalCenter
           }
-          color: Theme.palette.normal.foregroundText
+          color: hintIconColor
           font.bold: false
           fontSize: "medium"
-        }
-
+        }     
         MouseArea {
           anchors.fill: parent
           enabled: modelData.enabled
@@ -145,9 +101,48 @@ Item {
             bottomEdgeHint.state = "collapsed"
             modelData.triggered(null)
           }
-        }
+        }   
+        //property string writelog1: writeToLog("DEBUG","Count:", index);
+        //property string writelog6: writeToLog("DEBUG","x"+index+":" , index * actionButtonSize/4);
       }
     }
+  }
+
+  Rectangle {
+    id: bottomEdgeHint
+//    z:-1
+    height: actionButtonSize / 1.5
+    width: height + hintSize
+    color: hintColor
+    /*anchors {
+      bottom: parent.bottom
+      right: parent.right
+      //rightMargin: hintSize / 4
+    }*/
+
+    anchors.horizontalCenter: parent.horizontalCenter
+        y: collapsedPosition
+        z: parent.z + 1
+    //width: hintSize
+    //height: width
+    //radius: width
+    visible: bottomEdgeEnabled
+
+    property string writelog4: writeToLog("DEBUG","bottomEdgeHint visibility:", visible);
+
+    Icon {
+      id: hintIcon
+      width: hintSize/4
+      height: width
+      name: hintIconName
+      color: hintIconColor
+      anchors {
+        centerIn: parent
+      }
+    }
+
+    //property real actionListDistance: - actionButtonDistance
+    
 
     MouseArea {
         id: mouseArea
@@ -167,39 +162,21 @@ Item {
           maximumY: collapsedPosition
         }
 
-        onReleased: {
-          if ((dragDirection === "BottomToTop") && bottomEdgeHint.y < collapsedPosition) {
-            bottomEdgeHint.state = "expanded"
-          }
-          else {
-            if (bottomEdgeHint.state === "collapsed") {
-              bottomEdgeHint.y = collapsedPosition
-            }
-            bottomEdgeHint.state = "collapsed"
-          }
-          previousY = -1
-          dragDirection = "None"
-        }
-
         onClicked: {
-          if (bottomEdgeHint.y === collapsedPosition)
+          if (bottomEdgeHint.state == "collapsed"){
             bottomEdgeHint.state = "expanded"
-          else
-            bottomEdgeHint.state = "collapsed"
-        }
-
-        onPressed: {
-          previousY = bottomEdgeHint.y
-        }
-
-        onMouseYChanged: {
-          var yOffset = previousY - bottomEdgeHint.y
-          if (Math.abs(yOffset) <= units.gu(2)) {
-            return
           }
-          previousY = bottomEdgeHint.y
-          dragDirection = yOffset > 0 ? "BottomToTop" : "TopToBottom"
+          else{
+            bottomEdgeHint.state = "collapsed"
+          }
         }
+        onWheel: {
+          if (bottomEdgeHint.state == "expanded"){
+            bottomEdgeHint.state = "collapsed"
+          }
+        }
+
+        property string writelog0: writeToLog("DEBUG","Triggered state change to: ", bottomEdgeHint.state);
     }
 
     state: "collapsed"
@@ -230,19 +207,23 @@ Item {
         to: "expanded"
         SpringAnimation {
           target: bottomEdgeHint
-          property: "y"
-          spring: 2
+          property: "x"
+          spring: 5
           damping: .2
+          mass: 10
          // epsilon: .05
         }
       },
 
       Transition {
         to: "collapsed"
-        SmoothedAnimation {
+        SpringAnimation {
           target: bottomEdgeHint
-          property: "y"
-          duration: UbuntuAnimation.BriskDuration
+          property: "x"
+          spring: 5
+          damping: .2
+          mass: 10
+          epsilon: .05
         }
       }
     ]

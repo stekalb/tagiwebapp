@@ -17,6 +17,5 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/mateo/youtube-morphc/build/po/youtube-morphc.desktop.in.h:1
-msgid "youtube-morphc"
+msgid "tagiwebapp"
 msgstr ""

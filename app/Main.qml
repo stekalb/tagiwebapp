@@ -16,8 +16,8 @@ MainView {
   // }
 
   objectName: "mainView"
-  theme.name: "Ubuntu.Components.Themes.SuruDark"
-  backgroundColor: "transparent"
+  //theme.name: "Ubuntu.Components.Themes.SuruDark"
+  backgroundColor: "black"
   applicationName: "tagiwebapp.ste-kal"
 
   property string myTabletUrl: "http://www.tagesanzeiger.ch"
@@ -100,6 +100,30 @@ MainView {
         text: qsTr("Reload")
       },
       RadialAction {
+        id: international
+        iconSource: Qt.resolvedUrl("icons/0202-sphere.svg")
+        onTriggered: {
+          webview.url = myUrl+"/ausland"
+        }
+        text: qsTr("International")
+      },
+      RadialAction {
+        id: switzerland
+        iconSource: Qt.resolvedUrl("icons/0050-folder-plus.svg")
+        onTriggered: {
+          webview.url = myUrl+"/schweiz"
+        }
+        text: qsTr("Schweiz")
+      },
+      RadialAction {
+        id: sport
+        iconSource: Qt.resolvedUrl("icons/0423-dribbble.svg")
+        onTriggered: {
+          webview.url = myUrl+"/sport"
+        }
+        text: qsTr("Sport")
+      },
+      RadialAction {
         id: dasmagazin
         iconSource: Qt.resolvedUrl("icons/0121-quotes-right.svg")
         onTriggered: {
@@ -108,28 +132,12 @@ MainView {
         text: qsTr("Magazin")
       },
       RadialAction {
-        id: international
-        iconSource: Qt.resolvedUrl("icons/0202-sphere.svg")
+        id: sonntagszeitung
+        iconSource: Qt.resolvedUrl("icons/sonntagszeitung.svg")
         onTriggered: {
-          webview.url = myUrl+"/categories/551a6538ab5c37387f000eb5"
+          webview.url = myUrl+"/sonntagszeitung"
         }
-        text: qsTr("International")
-      },
-      RadialAction {
-        id: switzerland
-        iconSource: Qt.resolvedUrl("icons/0050-folder-plus.svg")
-        onTriggered: {
-          webview.url = myUrl+"/categories/551a6538ab5c37387f000eb4"
-        }
-        text: qsTr("Schweiz")
-      },
-      RadialAction {
-        id: sport
-        iconSource: Qt.resolvedUrl("icons/0423-dribbble.svg")
-        onTriggered: {
-          webview.url = myUrl+"/categories/551a6538ab5c37387f000ebb"
-        }
-        text: qsTr("Sport")
+        text: qsTr("Sonntagszeitung")
       },
       RadialAction {
         id: back
@@ -175,8 +183,6 @@ MainView {
         }
       } else {
         window.visibility = internal.currentWindowState
-        //window.currentWebview.fullscreen = false
-        //window.currentWebview.fullscreen = false
       }
     }
   }
