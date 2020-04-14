@@ -38,27 +38,30 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="2490"
-     inkscape:window-height="1376"
+     inkscape:window-width="2132"
+     inkscape:window-height="744"
      id="namedview1173"
      showgrid="false"
      inkscape:zoom="3.6875"
-     inkscape:cx="-57.220339"
+     inkscape:cx="-116.74576"
      inkscape:cy="30.915254"
-     inkscape:window-x="70"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1"
+     inkscape:window-x="223"
+     inkscape:window-y="556"
+     inkscape:window-maximized="0"
      inkscape:current-layer="svg1171" />
-  <rect
-     style="fill:#0066cc;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     id="rect873"
-     width="66.711868"
-     height="64.271187"
-     x="-2.1694915"
-     y="0.27118644" />
-  <path
-     d="M50 40c-7.732 0-14-6.268-14-14s6.268-14 14-14 14 6.268 14 14l0.063 2c0 15.464-12.536 28-28 28v-8c5.342 0 10.365-2.080 14.142-5.858 0.727-0.727 1.391-1.501 1.989-2.314-0.715 0.112-1.447 0.172-2.194 0.172zM14 40c-7.732 0-14-6.268-14-14s6.268-14 14-14 14 6.268 14 14l0.063 2c0 15.464-12.536 28-28 28v-8c5.342 0 10.365-2.080 14.142-5.858 0.727-0.727 1.391-1.501 1.989-2.314-0.715 0.112-1.447 0.172-2.194 0.172z"
-     fill="#000000"
-     id="path1169"
-     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1" />
+  <g
+     id="g2174">
+    <rect
+       y="0.27118644"
+       x="-2.1694915"
+       height="64.271187"
+       width="66.711868"
+       id="rect873"
+       style="fill:#0066cc;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1"
+       id="path1169"
+       d="m 50,40 c -7.732,0 -14,-6.268 -14,-14 0,-7.732 6.268,-14 14,-14 7.732,0 14,6.268 14,14 l 0.063,2 c 0,15.464 -12.536,28 -28,28 v -8 c 5.342,0 10.365,-2.08 14.142,-5.858 0.727,-0.727 1.391,-1.501 1.989,-2.314 C 51.479,39.94 50.747,40 50,40 Z M 14,40 C 6.268,40 0,33.732 0,26 0,18.268 6.268,12 14,12 c 7.732,0 14,6.268 14,14 l 0.063,2 c 0,15.464 -12.536,28 -28,28 v -8 c 5.342,0 10.365,-2.08 14.142,-5.858 0.727,-0.727 1.391,-1.501 1.989,-2.314 C 15.479,39.94 14.747,40 14,40 Z"
+       inkscape:connector-curvature="0" />
+  </g>
 </svg>
