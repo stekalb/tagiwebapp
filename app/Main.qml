@@ -6,6 +6,7 @@ import "UCSComponents"
 import QtWebEngine 1.7
 import Qt.labs.settings 1.0
 import QtSystemInfo 5.5
+import "config.js" as Conf
 
 MainView {
   id:window
@@ -17,13 +18,13 @@ MainView {
 
   objectName: "mainView"
   //theme.name: "Ubuntu.Components.Themes.SuruDark"
-  backgroundColor: "black"
-  applicationName: "tagiwebapp.ste-kal"
+  backgroundColor: Conf.AppBackgroundColor
+  applicationName: Conf.AppName
 
-  property string myTabletUrl: "http://www.tagesanzeiger.ch"
-  property string myMobileUrl: "http://mobile2.tagesanzeiger.ch"
-  property string myTabletUA: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/67.0.3396.99 Chrome/67.0.3396.99 Safari/537.36"
-  property string myMobileUA: "Mozilla/5.0 (Linux; Android 8.0.0; Pixel Build/OPR3.170623.007) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36"
+  property string myTabletUrl: Conf.TabletUrl
+  property string myMobileUrl: Conf.MobileUrl
+  property string myTabletUA: Conf.TabletUA
+  property string myMobileUA: Conf.MobileUA
 
   property string myUrl: (Screen.devicePixelRatio == 1.625) ? myTabletUrl : myMobileUrl
   //property string myUrl: "http://www.tagesanzeiger.ch"

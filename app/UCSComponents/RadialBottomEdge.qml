@@ -3,14 +3,16 @@ import QtFeedback 5.0
 import Ubuntu.Components 1.3
 import QtQuick.Window 2.1
 
+import "../config.js" as Conf
+
 Item {
   id: bottomEdge
 
   property int hintSize: units.gu(6)
-  property color hintColor: "#0066cc"
-  property string hintIconName: "view-grid-symbolic"
-  property alias hintIconSource: hintIcon.source
-  property color hintIconColor: "white"
+  property color hintColor: Conf.NavBackgroundColor
+ // property string hintIconName: "view-grid-symbolic"
+  property url hintIconSource: Qt.resolvedUrl("../icons/hamburger.svg")
+  property color hintIconColor: Conf.NavIconColor
   property bool bottomEdgeEnabled: true
 
 
@@ -132,9 +134,9 @@ Item {
 
     Icon {
       id: hintIcon
-      width: hintSize/4
+      width: hintSize/2
       height: width
-      name: hintIconName
+      source: hintIconSource
       color: hintIconColor
       anchors {
         centerIn: parent
