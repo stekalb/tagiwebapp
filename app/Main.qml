@@ -19,7 +19,7 @@ MainView {
   objectName: "mainView"
   //theme.name: "Ubuntu.Components.Themes.SuruDark"
   backgroundColor: Conf.AppBackgroundColor
-  applicationName: Conf.AppName
+  applicationName: "tagiwebapp.ste-kal"
 
   property string myTabletUrl: Conf.TabletUrl
   property string myMobileUrl: Conf.MobileUrl

@@ -3,7 +3,6 @@ Config file for Tagiwebapp
 */
 
 // Common Settings
-var AppName = "tagiwebapp.ste-kal";
 var AppBackgroundColor = "black";
 var NavBackgroundColor = "#0066cc";
 var NavIconColor = "white";
