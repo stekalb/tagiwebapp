@@ -13,14 +13,15 @@ Item {
  // property string hintIconName: "view-grid-symbolic"
   property url hintIconSource: Qt.resolvedUrl("../icons/hamburger.svg")
   property color hintIconColor: Conf.NavIconColor
+  property real actionBarScaling: Conf.ActionBarScaleFactor
   property bool bottomEdgeEnabled: true
 
 
-  property real actionButtonSize: units.gu(5)
+  property real actionButtonSize: units.gu(3)
 
-  property real expandedPosition: height - actionButtonSize - actionButtonSize / 1.5
+  property real expandedPosition: height - actionButtonSize * actionBarScaling - actionButtonSize
   //property real collapsedPosition: height - hintSize/2
-  property int collapsedPosition: height - actionButtonSize / 1.5 + 1
+  property int collapsedPosition: height - actionButtonSize / actionBarScaling + 1
 
   property list<RadialAction> actions
   property real actionButtonDistance: actionButtonSize / 4
@@ -31,6 +32,8 @@ Item {
     console.log("["+mylevel+"]  "+mytext+" "+mymessage)
     return(true);
   }
+
+  property string writelog5: writeToLog("DEBUG","devicePixelRatio: ", visible);
 
   //property string writelog8: writeToLog("DEBUG","Orientation:", Screen.orientation);
 
@@ -48,7 +51,7 @@ Item {
     visible: bottomEdgeHint.state !== "collapsed"
     z: -2
     width: parent.width
-    height: actionButtonSize
+    height: actionButtonSize * actionBarScaling
     color: hintColor
     anchors {
       bottom: parent.bottom
@@ -62,13 +65,13 @@ Item {
       model: actions
 
       Rectangle { 
-        width: actionButtonSize
+        width: actionButtonSize * actionBarScaling
         height: width
         //radius: width
         color: hintColor
         
         transform: Translate {
-          x: (index * actionButtonSize) + index * 5
+          x: (index * actionButtonSize * actionBarScaling) + index * 5
         }
 
         Icon {
@@ -113,7 +116,7 @@ Item {
   Rectangle {
     id: bottomEdgeHint
 //    z:-1
-    height: actionButtonSize / 1.5
+    height: actionButtonSize
     width: height + hintSize
     color: hintColor
     /*anchors {
@@ -134,7 +137,7 @@ Item {
 
     Icon {
       id: hintIcon
-      width: hintSize/2
+      width: actionButtonSize / 1.1
       height: width
       source: hintIconSource
       color: hintIconColor
@@ -176,6 +179,33 @@ Item {
           if (bottomEdgeHint.state == "expanded"){
             bottomEdgeHint.state = "collapsed"
           }
+        }
+        onReleased: {
+            if ((dragDirection === "BottomToTop") &&
+                    bottomEdgeHint.y < collapsedPosition) {
+                bottomEdgeHint.state = "expanded"
+            } 
+            else {
+               if (bottomEdgeHint.state === "collapsed") {
+                  bottomEdgeHint.y = collapsedPosition
+               }
+               bottomEdgeHint.state = "collapsed"
+            }
+            previousY = -1
+            dragDirection = "None"
+        }
+
+        onPressed: {
+          previousY = bottomEdgeHint.y
+        }
+
+        onMouseYChanged: {
+          var yOffset = previousY - bottomEdgeHint.y
+          if (Math.abs(yOffset) <= units.gu(2)) {
+            return
+          }
+          previousY = bottomEdgeHint.y
+          dragDirection = yOffset > 0 ? "BottomToTop" : "TopToBottom"
         }
 
         property string writelog0: writeToLog("DEBUG","Triggered state change to: ", bottomEdgeHint.state);

@@ -4,6 +4,7 @@ Config file for Tagiwebapp
 
 // Common Settings
 var AppBackgroundColor = "black";
+var ActionBarScaleFactor = 1.75
 var NavBackgroundColor = "#0066cc";
 var NavIconColor = "white";
 

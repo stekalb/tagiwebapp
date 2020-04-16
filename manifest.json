@@ -9,7 +9,7 @@
             "desktop":  "tagiwebapp.desktop"
         }
     },
-    "version": "3.5",
+    "version": "3.6",
     "maintainer": "Stefan Kalb <stefan.kalb@gmx.ch>",
     "framework" : "ubuntu-sdk-16.04"
 }
