@@ -62,6 +62,8 @@ MainView {
       property alias dataPath: webContext.persistentStoragePath
       dataPath: dataLocation
       httpUserAgent: myUA
+      httpCacheType: WebEngineProfile.NoCache
+      offTheRecord: false
     }
 
     anchors {
@@ -70,14 +72,14 @@ MainView {
     }
 
     url: myUrl
-    userScripts: [
+    /*userScripts: [
       WebEngineScript {
         injectionPoint: WebEngineScript.DocumentCreation
         worldId: WebEngineScript.MainWorld
         name: "QWebChannel"
         sourceUrl: "ubuntutheme.js"
       }
-    ]
+    ]*/
   }
 
   RadialBottomEdge {
@@ -104,7 +106,7 @@ MainView {
         id: international
         iconSource: Qt.resolvedUrl("icons/0202-sphere.svg")
         onTriggered: {
-          webview.url = myUrl+"/ausland"
+          webview.url = myUrl+"ausland"
         }
         text: qsTr("International")
       },
@@ -112,7 +114,7 @@ MainView {
         id: switzerland
         iconSource: Qt.resolvedUrl("icons/0050-folder-plus.svg")
         onTriggered: {
-          webview.url = myUrl+"/schweiz"
+          webview.url = myUrl+"schweiz"
         }
         text: qsTr("Schweiz")
       },
@@ -120,7 +122,7 @@ MainView {
         id: sport
         iconSource: Qt.resolvedUrl("icons/0423-dribbble.svg")
         onTriggered: {
-          webview.url = myUrl+"/sport"
+          webview.url = myUrl+"sport"
         }
         text: qsTr("Sport")
       },
@@ -136,7 +138,7 @@ MainView {
         id: sonntagszeitung
         iconSource: Qt.resolvedUrl("icons/sonntagszeitung.svg")
         onTriggered: {
-          webview.url = myUrl+"/sonntagszeitung"
+          webview.url = myUrl+"sonntagszeitung"
         }
         text: qsTr("Sonntagszeitung")
       },

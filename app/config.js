@@ -14,5 +14,5 @@ var TabletUA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like 
 
 
 // Mobile Device Settings
-var MobileUrl = "http://mobile2.tagesanzeiger.ch/";
+var MobileUrl = "http://www.tagesanzeiger.ch/";
 var MobileUA = "Mozilla/5.0 (Linux; Android 8.0.0; Pixel Build/OPR3.170623.007) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36";
