@@ -4,10 +4,11 @@ Comment=Morph based alternate Tagesanzeiger Webapp
 Exec=qmlscene %u app/Main.qml --scaling --disable-gpu
 Terminal=false
 Type=Application
+Keywords=Tagi;Tagesanzeiger;News;Zurich;TA;Switzerland;swiss;
 Icon=icon.png
 X-Ubuntu-Touch=true
 
-X-Ubuntu-Splash-Color=#ffffff
+X-Ubuntu-Splash-Color=#0066cc
 X-Ubuntu-Splash-Image=app/icons/splash.svg
 
 Name[en_US]=Tagesanzeiger
