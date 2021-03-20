@@ -56,7 +56,7 @@ foreach(PO_FILE ${PO_FILES})
  RENAME ${DOMAIN}.mo)
 endforeach(PO_FILE)
 
-add_custom_target(${DESKTOP_FILE_NAME} ALL
-    COMMENT "Merging translations into ${DESKTOP_FILE_NAME}"
-    COMMAND LC_ALL=C ${INTLTOOL_MERGE} -d -u ${CMAKE_SOURCE_DIR}/po ${CMAKE_BINARY_DIR}/app/${DESKTOP_FILE_NAME}.in ${CMAKE_BINARY_DIR}/app/${DESKTOP_FILE_NAME} > /dev/null
-)
+#add_custom_target(${DESKTOP_FILE_NAME} ALL
+#    COMMENT "Merging translations into ${DESKTOP_FILE_NAME}"
+#    COMMAND LC_ALL=C ${INTLTOOL_MERGE} -d -u ${CMAKE_SOURCE_DIR}/po ${CMAKE_BINARY_DIR}/app/${DESKTOP_FILE_NAME}.in ${CMAKE_BINARY_DIR}/app/${DESKTOP_FILE_NAME} > /dev/null
+#)

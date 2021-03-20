@@ -1,0 +1,4 @@
+{
+  "builder": "pure-qml-cmake",
+  "kill": "qmlscene"
+}
