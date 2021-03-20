@@ -1,11 +1,13 @@
 import QtQuick 2.9
-import Ubuntu.Components 1.3
 import QtQuick.Window 2.2
 import Morph.Web 0.1
-import "UCSComponents"
 import QtWebEngine 1.7
+import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
+import Ubuntu.Content 1.1
+import QtMultimedia 5.8
 import Qt.labs.settings 1.0
-import QtSystemInfo 5.5
+import "UCSComponents"
 import "config.js" as Conf
 
 MainView {
