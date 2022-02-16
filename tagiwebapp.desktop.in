@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Tagesanzeiger
 Comment=Morph based alternate Tagesanzeiger Webapp
-Exec=qmlscene %u app/Main.qml --scaling --disable-gpu
+Exec=qmlscene %u app/Main.qml --scaling
 Terminal=false
 Type=Application
 Keywords=Tagi;Tagesanzeiger;News;Zurich;TA;Switzerland;swiss;

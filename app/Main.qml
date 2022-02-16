@@ -1,7 +1,8 @@
-import QtQuick 2.9
+import QtQuick 2.12
 import QtQuick.Window 2.2
+import QtQuick.Controls 2.12
 import Morph.Web 0.1
-import QtWebEngine 1.7
+import QtWebEngine 1.10
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 import Ubuntu.Content 1.1
@@ -32,6 +33,9 @@ MainView {
   //property string myUrl: "http://www.tagesanzeiger.ch"
   property string myUA: (Screen.devicePixelRatio == 1.625) ? myTabletUA : myMobileUA
   //"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/67.0.3396.99 Chrome/67.0.3396.99 Safari/537.36"
+
+    
+
   WebEngineView {
     id: webview
     anchors {
@@ -43,6 +47,7 @@ MainView {
     //settings.appCacheEnabled: true
     settings.javascriptCanAccessClipboard: true
     settings.fullScreenSupportEnabled: true
+    settings.showScrollBars: false
     property var currentWebview: webview
     settings.pluginsEnabled: true
 
@@ -82,6 +87,11 @@ MainView {
         sourceUrl: "ubuntutheme.js"
       }
     ]*/
+    ScrollBar.vertical: ScrollBar{
+      id: scrollbar
+      active: true
+      size: 0.1
+    }
   }
 
   RadialBottomEdge {
