@@ -28,6 +28,7 @@ MainView {
   property string myMobileUrl: Conf.MobileUrl
   property string myTabletUA: Conf.TabletUA
   property string myMobileUA: Conf.MobileUA
+  property string title: Conf.AppTitle
 
   property string myUrl: (Screen.devicePixelRatio == 1.625) ? myTabletUrl : myMobileUrl
   //property string myUrl: "http://www.tagesanzeiger.ch"
@@ -87,11 +88,7 @@ MainView {
         sourceUrl: "ubuntutheme.js"
       }
     ]*/
-    ScrollBar.vertical: ScrollBar{
-      id: scrollbar
-      active: true
-      size: 0.1
-    }
+    
   }
 
   RadialBottomEdge {

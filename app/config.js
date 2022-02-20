@@ -3,6 +3,7 @@ Config file for Tagiwebapp
 */
 
 // Common Settings
+var AppTitle = "Tagesanzeiger"
 var AppBackgroundColor = "0066cc";
 var ActionBarScaleFactor = 1.75
 var NavBackgroundColor = "#0066cc";
