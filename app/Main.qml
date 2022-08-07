@@ -66,12 +66,14 @@ MainView {
 
     profile:  WebEngineProfile {
       id: webContext
-      persistentCookiesPolicy: WebEngineProfile.ForcePersistentCookies
-      property alias dataPath: webContext.persistentStoragePath
-      dataPath: dataLocation
+        storageName: "myProfile"
+        offTheRecord: false
+        persistentCookiesPolicy: WebEngineProfile.ForcePersistentCookies
+        property alias dataPath: webContext.persistentStoragePath
+
+        dataPath: dataLocation
       httpUserAgent: myUA
       httpCacheType: WebEngineProfile.NoCache
-      offTheRecord: false
     }
 
     anchors {
